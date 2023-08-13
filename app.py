@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import sqlite3
 
 app = Flask(__name__) #create instance of class Flask
@@ -11,7 +11,7 @@ cursor.execute('CREATE TABLE IF NOT EXISTS schedules(name, classes)')
 def hello_world():
     print("the __name__ of this module is... ")
     print(__name__)
-    return "No hablo queso!"
+    return render_template('main.html')
 
 if __name__ == "__main__":  # true if this file NOT imported
     app.debug = True        # enable auto-reload upon code change
