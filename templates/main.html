@@ -129,93 +129,44 @@
                 <!-- end weekdays -->
 
                 
-                <div class="row" style="height: 95%;">
+                <div id="weekdays" class="row" style="height: 95%;">
                     <!-- Monday -->
                     <div class="col-5th" style="padding: 0%; background-color: aqua;">
-                        <div id="monday" class="box">
-                            <script>
-                                var day = document.getElementById("monday")
-                                for(let i = start; i < end; i++) {
-                                    // create the element
-                                    var row = document.createElement("div")
-                                    row.setAttribute("class", "row timestamp")
-                                    var time = document.createElement("div")
-                                    time.setAttribute("class", "time")
-                                    row.appendChild(time)
-                                    day.appendChild(row)
-                                }
-                            </script>
-                        </div>
+                        <div id="monday" class="box"></div>
                     </div>
                     <!-- Tuesday -->
                     <div class="col-5th" style="padding: 0%;">
-                        <div id="tuesday" class="box">
-                            <script>
-                                var day = document.getElementById("tuesday")
-                                for(let i = start; i < end; i++) {
-                                    // create the element
-                                    var row = document.createElement("div")
-                                    row.setAttribute("class", "row timestamp")
-                                    var time = document.createElement("div")
-                                    time.setAttribute("class", "time")
-                                    row.appendChild(time)
-                                    day.appendChild(row)
-                                }
-                            </script>
-                        </div>
+                        <div id="tuesday" class="box"></div>
                     </div>
                     <!-- Wednesday -->
                     <div class="col-5th" style="padding: 0%;">
-                        <div id="wednesday" class="box">
-                            <script>
-                                var day = document.getElementById("wednesday")
-                                for(let i = start; i < end; i++) {
-                                    // create the element
-                                    var row = document.createElement("div")
-                                    row.setAttribute("class", "row timestamp")
-                                    var time = document.createElement("div")
-                                    time.setAttribute("class", "time")
-                                    row.appendChild(time)
-                                    day.appendChild(row)
-                                }
-                            </script>
-                        </div>
+                        <div id="wednesday" class="box"></div>
                     </div>
                     <!-- Thursday -->
                     <div class="col-5th" style="padding: 0%;">
-                        <div id="thursday" class="box">
-                            <script>
-                                var day = document.getElementById("thursday")
-                                for(let i = start; i < end; i++) {
-                                    // create the element
-                                    var row = document.createElement("div")
-                                    row.setAttribute("class", "row timestamp")
-                                    var time = document.createElement("div")
-                                    time.setAttribute("class", "time")
-                                    row.appendChild(time)
-                                    day.appendChild(row)
-                                }
-                            </script>
-                        </div>
+                        <div id="thursday" class="box"></div>
                     </div>
                     <!-- Friday -->
                     <div class="col-5th" style="padding: 0%;">
-                        <div id="friday" class="box">
-                            <script>
-                                var day = document.getElementById("friday")
-                                for(let i = start; i < end; i++) {
-                                    // create the element
-                                    var row = document.createElement("div")
-                                    row.setAttribute("class", "row timestamp")
-                                    var time = document.createElement("div")
-                                    time.setAttribute("class", "time")
-                                    row.appendChild(time)
-                                    day.appendChild(row)
-                                }
-                            </script>
-                        </div>
+                        <div id="friday" class="box"></div>
                     </div>
                 </div>
+                <script>
+                    var weekdays = document.getElementById("weekdays")
+                    for(var child of weekdays.children) {
+                        var day = (child.children)[0]
+
+                        for(let i = start; i < end; i++) {
+                            // create the element
+                            var row = document.createElement("div")
+                            row.setAttribute("class", "row timestamp")
+                            var time = document.createElement("div")
+                            time.setAttribute("class", "time")
+                            row.appendChild(time)
+                            day.appendChild(row)
+                        }
+                    }
+                </script>
             </div>
 
         </div>
