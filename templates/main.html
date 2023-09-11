@@ -31,11 +31,12 @@
             text-align: center; 
             border-bottom: 1px solid #000; 
             line-height: 0.1em;
+            padding: 0;
             /* margin: 10px 0 20px;  */
         } 
         .section {
             background: #fff;
-            padding: 0 10px;
+            padding: 0 0px;
         }
         .timestamp {
             width: 100%;
@@ -47,6 +48,9 @@
 </head>
 
 <body>
+    <div id="start" hidden> 8 </div>
+    <div id="end" hidden> 22 </div>
+
     <div class="container-fluid" style="height: 94vh; width: 94vw; margin: 3vh 3vw 3vh 3vw;">
         <div class="row" style="height: 100%;">
             <!-- sidebar -->
@@ -59,70 +63,45 @@
             </div> 
             <!-- end sidebar -->
 
-            <!-- time -->
+            <!-- times -->
             <div class="col-1" style="padding: 0%; height: 100%;">
                 <div class="week-header" style="height: 5%; background-color: #fff; box-shadow: none;">
                 </div>
-                <div class="box" style="height: 95%;">
-                    <div class="row timestamp">
-                        <div class="time"><span class="section">8:00</span></div>
-                    </div>
+                <div id="times" class="box" style="height: 95%;">
+                    <script>
+                        // get start and end times
+                        var start = parseInt(document.getElementById("start").innerHTML)
+                        var end = parseInt(document.getElementById("end").innerHTML)
+                        // get the parent container
+                        var times = document.getElementById("times")
 
-                    <div class="row timestamp">
-                        <div class="time"><span class="section">9:00</span></div>
-                    </div>
+                        for(let i = start; i <= end; i++) {
 
-                    <div class="row timestamp">
-                        <div class="time"><span class="section">10:00</span></div>
-                    </div>
+                            // create the element
+                            var row = document.createElement("div")
+                            row.setAttribute("class", "row timestamp")
+                            var time = document.createElement("div")
+                            time.setAttribute("class", "time")
+                            var section = document.createElement("span")
+                            section.setAttribute("class", "section")
+                            section.innerHTML = i.toString() + ":00"
 
-                    <div class="row timestamp">
-                        <div class="time"><span class="section">11:00</span></div>
-                    </div>
+                            if (i == end) {
+                                row.setAttribute("style", "width: 100%; margin:0%; height:0%;")
+                                time.setAttribute("style", "height: 0; border-bottom: 0;")
+                            }
 
-                    <div class="row timestamp">
-                        <div class="time"><span class="section">12:00</span></div>
-                    </div>
+                            time.appendChild(section)
+                            row.appendChild(time)
+                            
+                            times.appendChild(row)
 
-                    <div class="row timestamp">
-                        <div class="time"><span class="section">13:00</span></div>
-                    </div>
+                        }
+                    </script>
 
-                    <div class="row timestamp">
-                        <div class="time"><span class="section">14:00</span></div>
-                    </div>
-
-                    <div class="row timestamp">
-                        <div class="time"><span class="section">15:00</span></div>
-                    </div>
-
-                    <div class="row timestamp">
-                        <div class="time"><span class="section">16:00</span></div>
-                    </div>
-
-                    <div class="row timestamp">
-                        <div class="time"><span class="section">17:00</span></div>
-                    </div>
-
-                    <div class="row timestamp">
-                        <div class="time"><span class="section">18:00</span></div>
-                    </div>
-
-                    <div class="row timestamp">
-                        <div class="time"><span class="section">19:00</span></div>
-                    </div>
-
-                    <div class="row timestamp">
-                        <div class="time"><span class="section">20:00</span></div>
-                    </div>
-
-                    <div class="row timestamp">
-                        <div class="time"><span class="section">21:00</span></div>
-                    </div>
-
-                    <div class="row timestamp" style="width: 100%; margin: 0%; height: 0%;">
+                    <!-- <div class="row timestamp" style="width: 100%; margin: 0%; height: 0%;">
                         <div class="time" style="height: 0; border-bottom: 0;"><span class="section">22:00</span></div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <!-- end time -->
@@ -152,98 +131,88 @@
                 
                 <div class="row" style="height: 95%;">
                     <!-- Monday -->
-                    <div class="col-5th" style="padding: 0%;">
-                        <div class="box">
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
+                    <div class="col-5th" style="padding: 0%; background-color: aqua;">
+                        <div id="monday" class="box">
+                            <script>
+                                var day = document.getElementById("monday")
+                                for(let i = start; i < end; i++) {
+                                    // create the element
+                                    var row = document.createElement("div")
+                                    row.setAttribute("class", "row timestamp")
+                                    var time = document.createElement("div")
+                                    time.setAttribute("class", "time")
+                                    row.appendChild(time)
+                                    day.appendChild(row)
+                                }
+                            </script>
                         </div>
                     </div>
                     <!-- Tuesday -->
                     <div class="col-5th" style="padding: 0%;">
-                        <div class="box">
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
+                        <div id="tuesday" class="box">
+                            <script>
+                                var day = document.getElementById("tuesday")
+                                for(let i = start; i < end; i++) {
+                                    // create the element
+                                    var row = document.createElement("div")
+                                    row.setAttribute("class", "row timestamp")
+                                    var time = document.createElement("div")
+                                    time.setAttribute("class", "time")
+                                    row.appendChild(time)
+                                    day.appendChild(row)
+                                }
+                            </script>
                         </div>
                     </div>
                     <!-- Wednesday -->
                     <div class="col-5th" style="padding: 0%;">
-                        <div class="box">
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
+                        <div id="wednesday" class="box">
+                            <script>
+                                var day = document.getElementById("wednesday")
+                                for(let i = start; i < end; i++) {
+                                    // create the element
+                                    var row = document.createElement("div")
+                                    row.setAttribute("class", "row timestamp")
+                                    var time = document.createElement("div")
+                                    time.setAttribute("class", "time")
+                                    row.appendChild(time)
+                                    day.appendChild(row)
+                                }
+                            </script>
                         </div>
                     </div>
                     <!-- Thursday -->
                     <div class="col-5th" style="padding: 0%;">
-                        <div class="box">
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
+                        <div id="thursday" class="box">
+                            <script>
+                                var day = document.getElementById("thursday")
+                                for(let i = start; i < end; i++) {
+                                    // create the element
+                                    var row = document.createElement("div")
+                                    row.setAttribute("class", "row timestamp")
+                                    var time = document.createElement("div")
+                                    time.setAttribute("class", "time")
+                                    row.appendChild(time)
+                                    day.appendChild(row)
+                                }
+                            </script>
                         </div>
                     </div>
                     <!-- Friday -->
                     <div class="col-5th" style="padding: 0%;">
-                        <div class="box">
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
-                            <div class="row timestamp"><div class="time"></div></div>
+                        <div id="friday" class="box">
+                            <script>
+                                var day = document.getElementById("friday")
+                                for(let i = start; i < end; i++) {
+                                    // create the element
+                                    var row = document.createElement("div")
+                                    row.setAttribute("class", "row timestamp")
+                                    var time = document.createElement("div")
+                                    time.setAttribute("class", "time")
+                                    row.appendChild(time)
+                                    day.appendChild(row)
+                                }
+                            </script>
                         </div>
                     </div>
                 </div>
