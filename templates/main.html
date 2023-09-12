@@ -43,6 +43,18 @@
             margin: 0%;
             height: 7.142857%;
         }
+        .tab {
+            border-right: 1px solid #000;
+            padding: 0;
+            margin: 0;
+        }
+        
+        /*Bootstrap source code for reference*/
+        /* .row-cols-2 > * {
+            -ms-flex: 0 0 50%;
+            flex: 0 0 50%;
+            max-width: 50%;
+        } */
 
     </style>
 </head>
@@ -50,6 +62,7 @@
 <body>
     <div id="start" hidden> 8 </div>
     <div id="end" hidden> 22 </div>
+    <div id="numPeople" hidden> 6 </div>
 
     <div class="container-fluid" style="height: 94vh; width: 94vw; margin: 3vh 3vw 3vh 3vw;">
         <div class="row" style="height: 100%;">
@@ -131,7 +144,7 @@
                 
                 <div id="weekdays" class="row" style="height: 95%;">
                     <!-- Monday -->
-                    <div class="col-5th" style="padding: 0%; background-color: aqua;">
+                    <div class="col-5th" style="padding: 0%;">
                         <div id="monday" class="box"></div>
                     </div>
                     <!-- Tuesday -->
@@ -155,15 +168,31 @@
                     var weekdays = document.getElementById("weekdays")
                     for(var child of weekdays.children) {
                         var day = (child.children)[0]
-
+                        // for each day of the week
                         for(let i = start; i < end; i++) {
                             // create the element
                             var row = document.createElement("div")
                             row.setAttribute("class", "row timestamp")
                             var time = document.createElement("div")
                             time.setAttribute("class", "time")
+                            var innerRow = document.createElement("div")
+                            innerRow.setAttribute("class", "row")
+                            innerRow.setAttribute("style", "height:100%; padding:1px; margin:0; padding-bottom:0")
+
+                            time.appendChild(innerRow)
                             row.appendChild(time)
                             day.appendChild(row)
+
+                            var numPeople = parseFloat(document.getElementById("numPeople").innerHTML)
+                            // for every person
+                            for(let i = 0; i< numPeople; i++) {
+
+                                var tabs = document.createElement("div")
+                                tabs.setAttribute("class", "col-2")
+                                tabs.setAttribute("style", "padding:0px")
+                                // tabs.innerHTML = "hi"
+                                innerRow.appendChild(tabs)
+                            }
                         }
                     }
                 </script>
