@@ -189,8 +189,7 @@
                             for(let j = 0; j< numPeople; j++) {
 
                                 var tabs = document.createElement("div")
-                                tabs.setAttribute("class", "col-2")
-                                tabs.setAttribute("style", "padding:0px;")
+                                tabs.setAttribute("style", "padding:0px; overflow:hidden; flex: 0 0 auto; width:" + (100/numPeople) + "%;")
                                 tabs.setAttribute("id", dayName + " " + parseInt(i) + " " + parseInt(j))
                                 // tabs.innerHTML = "hi"
                                 innerRow.appendChild(tabs)
